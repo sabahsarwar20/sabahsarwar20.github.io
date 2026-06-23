@@ -199,7 +199,7 @@ Return ONLY valid JSON. No markdown, no backticks, no explanation.`;
   try {
     const res = await fetch('https://sabahsarwar20-github-io.vercel.app/api/proxy', {
       method: 'POST',
-      headers: { application/json', },
+      headers: { 'Content-Type': 'application/json' },
 
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
