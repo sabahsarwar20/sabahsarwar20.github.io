@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Client Follow-Up Generator — Christopher Ward</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f3; color: #1a1a1a; min-height: 100vh; padding: 2rem 1rem; }
+  .app { max-width: 640px; margin: 0 auto; }
+  .header { margin-bottom: 2rem; }
+  .header h1 { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .header p { font-size: 14px; color: #666; }
+  .card { background: #fff; border: 1px solid #e5e5e3; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+  .field { margin-bottom: 1rem; }
+  .field:last-child { margin-bottom: 0; }
+  .field label { display: block; font-size: 13px; font-weight: 500; color: #555; margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; font-size: 14px; padding: 8px 12px;
+    border: 1px solid #ddd; border-radius: 8px;
+    background: #fff; color: #1a1a1a;
+    font-family: inherit; outline: none; transition: border-color 0.15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: #999; }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .row { grid-template-columns: 1fr; } }
+  .btn { width: 100%; padding: 11px; font-size: 14px; font-weight: 600;
+    background: #1a1a1a; color: #fff; border: none; border-radius: 8px;
+    cursor: pointer; margin-top: 1rem; transition: opacity 0.15s; }
+  .btn:hover { opacity: 0.85; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .status { font-size: 13px; color: #888; text-align: center; margin-top: 0.75rem; min-height: 20px; }
+  .output { display: none; }
+  .output.visible { display: block; }
+  .result-card { background: #fff; border: 1px solid #e5e5e3; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+  .result-card h3 { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .email-subject { font-size: 13px; font-weight: 600; color: #555; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #f0f0ee; }
+  .email-body { font-size: 14px; color: #1a1a1a; line-height: 1.7; white-space: pre-wrap; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .tag { font-size: 12px; font-weight: 500; padding: 3px 10px; border-radius: 99px; }
+  .tag-blue { background: #e0f0ff; color: #0c5a9e; }
+  .tag-green { background: #d1fae5; color: #065f46; }
+  .tag-amber { background: #fef3c7; color: #92400e; }
+  .tone-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .tone-btn { font-size: 13px; padding: 5px 14px; border-radius: 99px; border: 1px solid #ddd; background: #fff; cursor: pointer; color: #555; transition: all 0.15s; }
+  .tone-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .action-row { display: flex; gap: 8px; margin-top: 12px; }
+  .action-btn { flex: 1; font-size: 13px; padding: 7px; border-radius: 8px; border: 1px solid #ddd; background: #fff; cursor: pointer; color: #555; transition: background 0.1s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .action-btn:hover { background: #f5f5f3; }
+  .upsell-item { padding: 10px 0; border-bottom: 1px solid #f0f0ee; font-size: 14px; }
+  .upsell-item:last-child { border-bottom: none; }
+  .upsell-item .model { font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+  .upsell-item .reason { color: #666; font-size: 13px; }
+  .built-by { text-align: center; font-size: 12px; color: #bbb; margin-top: 2rem; }
+  .divider { font-size: 12px; font-weight: 600; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <h1><i class="ti ti-mail-forward"></i> Client Follow-Up Generator</h1>
+    <p>Paste in interaction notes and get a personalized follow-up email with upsell recommendations.</p>
+  </div>
+
+  <div class="card">
+    <div class="field">
+      <label>Client name</label>
+      <input type="text" id="client-name" placeholder="e.g. James Thornton" />
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Watch purchased / discussed</label>
+        <input type="text" id="watch" placeholder="e.g. C65 Trident Diver" />
+      </div>
+      <div class="field">
+        <label>Transaction type</label>
+        <select id="tx-type">
+          <option value="purchased">Purchased</option>
+          <option value="browsed but didn't buy">Browsed, didn't buy</option>
+          <option value="warranty / service visit">Warranty / service</option>
+          <option value="returning client visit">Returning client</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Interaction notes</label>
+      <textarea id="notes" placeholder="e.g. James came in with his wife, was drawn to the bronze dial. Mentioned he's a diver, already owns a C60. Budget around £2,000. Interested in limited editions. Seemed very loyal to the brand — mentioned following CW since 2018."></textarea>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Days since visit</label>
+        <select id="days">
+          <option value="1-2 days">1–2 days</option>
+          <option value="3-5 days" selected>3–5 days</option>
+          <option value="1-2 weeks">1–2 weeks</option>
+          <option value="1 month">1 month</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Your name</label>
+        <input type="text" id="rep-name" placeholder="e.g. Sabah" />
+      </div>
+    </div>
+    <div class="field">
+      <label>Email tone</label>
+      <div class="tone-row">
+        <button class="tone-btn active" onclick="setTone(this, 'warm and personal')">Warm</button>
+        <button class="tone-btn" onclick="setTone(this, 'professional and polished')">Professional</button>
+        <button class="tone-btn" onclick="setTone(this, 'concise and direct')">Concise</button>
+      </div>
+    </div>
+    <button class="btn" id="run-btn" onclick="generate()">Generate follow-up email</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="output" id="output">
+    <div class="result-card">
+      <h3><i class="ti ti-mail"></i> Follow-up email</h3>
+      <div class="email-subject" id="subject-line"></div>
+      <div class="email-body" id="email-body"></div>
+      <div class="action-row">
+        <button class="action-btn" onclick="copyEmail()"><i class="ti ti-copy"></i> Copy email</button>
+        <button class="action-btn" onclick="regenerate()"><i class="ti ti-refresh"></i> Regenerate</button>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <h3><i class="ti ti-tag"></i> Upsell opportunities</h3>
+      <div id="upsell-content"></div>
+    </div>
+
+    <div class="result-card">
+      <h3><i class="ti ti-user"></i> Client profile snapshot</h3>
+      <div id="profile-content"></div>
+    </div>
+  </div>
+
+  <div class="built-by">Built by Sabah Sarwar · Christopher Ward Frisco · Powered by Claude AI</div>
+</div>
+
+<script>
+let currentTone = 'warm and personal';
+let lastEmailFull = '';
+let lastParams = {};
+
+function setTone(btn, tone) {
+  document.querySelectorAll('.tone-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentTone = tone;
+}
+
+async function generate() {
+  const clientName = document.getElementById('client-name').value.trim();
+  const watch = document.getElementById('watch').value.trim();
+  const notes = document.getElementById('notes').value.trim();
+  const txType = document.getElementById('tx-type').value;
+  const days = document.getElementById('days').value;
+  const repName = document.getElementById('rep-name').value.trim() || 'Sabah';
+
+  if (!clientName || !notes) {
+    document.getElementById('status').textContent = 'Please fill in client name and interaction notes.';
+    return;
+  }
+
+  lastParams = { clientName, watch, notes, txType, days, repName };
+
+  const btn = document.getElementById('run-btn');
+  btn.disabled = true;
+  document.getElementById('status').textContent = 'Drafting email...';
+  document.getElementById('output').classList.remove('visible');
+
+  const prompt = `You are a luxury watch sales assistant at Christopher Ward, a premium British watch brand with a price range of £1,000–£6,000. You help sales associates write personalized, high-quality client follow-up emails.
+
+Client details:
+- Name: ${clientName}
+- Watch purchased / discussed: ${watch || 'not specified'}
+- Transaction type: ${txType}
+- Days since visit: ${days}
+- Interaction notes: ${notes}
+- Sales associate: ${repName}
+- Tone: ${currentTone}
+
+Generate a JSON object with exactly these keys:
+{
+  "subject": "Email subject line",
+  "body": "Full email body. Sign off as ${repName}, Christopher Ward Frisco. Do not include the subject line here. Make it feel personal and reference specific details from the notes. For non-purchase visits, gently re-engage without being pushy. For purchases, reinforce the decision and open the door to future pieces.",
+  "upsell_opportunities": [
+    { "model": "Watch model name", "reason": "Why this client would love it based on the notes" },
+    { "model": "Watch model name", "reason": "Why this client would love it based on the notes" }
+  ],
+  "client_tags": ["tag1", "tag2", "tag3"],
+  "client_summary": "2-3 sentence CRM-style summary of this client's profile, preferences, and potential for future sales."
+}
+
+Return ONLY valid JSON. No markdown, no backticks, no explanation.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    const text = data.content.map(b => b.text || '').join('');
+    const parsed = JSON.parse(text.replace(/```json|```/g, '').trim());
+    renderResults(parsed);
+    document.getElementById('status').textContent = '';
+    document.getElementById('output').classList.add('visible');
+  } catch(e) {
+    document.getElementById('status').textContent = 'Something went wrong — try again.';
+  }
+  btn.disabled = false;
+}
+
+function regenerate() {
+  generate();
+}
+
+function renderResults(d) {
+  document.getElementById('subject-line').textContent = 'Subject: ' + d.subject;
+  lastEmailFull = 'Subject: ' + d.subject + '\n\n' + d.body;
+  document.getElementById('email-body').textContent = d.body;
+
+  const tagColors = ['tag-blue', 'tag-green', 'tag-amber'];
+  const tagsHTML = d.client_tags.map((t, i) =>
+    `<span class="tag ${tagColors[i % tagColors.length]}">${t}</span>`
+  ).join('');
+
+  document.getElementById('upsell-content').innerHTML = d.upsell_opportunities.map(u => `
+    <div class="upsell-item">
+      <div class="model"><i class="ti ti-watch" style="font-size:13px;margin-right:4px;"></i>${u.model}</div>
+      <div class="reason">${u.reason}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('profile-content').innerHTML = `
+    <div class="tag-row">${tagsHTML}</div>
+    <div style="font-size:14px;color:#444;line-height:1.65;">${d.client_summary}</div>
+  `;
+}
+
+function copyEmail() {
+  if (!lastEmailFull) return;
+  navigator.clipboard.writeText(lastEmailFull).then(() => {
+    const btn = document.querySelectorAll('.action-btn')[0];
+    btn.innerHTML = '<i class="ti ti-check"></i> Copied';
+    setTimeout(() => btn.innerHTML = '<i class="ti ti-copy"></i> Copy email', 2000);
+  });
+}
+</script>
+</body>
+</html>
