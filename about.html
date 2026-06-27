@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — NanoScope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --espresso:   #1A1108;
+      --cream:      #FAF7F2;
+      --cream-mid:  #F0E9DF;
+      --warm-dark:  #2C2416;
+      --warm-mid:   #7A6A5A;
+      --warm-light: #C0B0A0;
+      --rose:       #C18E84;
+      --rose-light: #EDD9D4;
+      --rose-dark:  #906058;
+      --divider:    #E3D8CC;
+      --ink:        #1E160E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+      height: 64px;
+      border-bottom: 1px solid var(--divider);
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .nav-logo em { font-style: italic; color: var(--rose-dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+    /* ── ABOUT ── */
+    .about-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 96px 40px 120px;
+    }
+
+    .page-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 52px;
+      line-height: 1.1;
+    }
+
+    .prose {
+      font-size: 15.5px;
+      line-height: 2.0;
+      color: var(--warm-mid);
+      font-weight: 300;
+    }
+
+    .prose p { margin-bottom: 28px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .prose strong {
+      color: var(--warm-dark);
+      font-weight: 500;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--divider);
+      margin: 52px 0;
+    }
+
+    .contact-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--warm-dark);
+      font-weight: 400;
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 9px 18px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--rose);
+      color: var(--rose-dark);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 28px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--warm-mid);
+    }
+
+    .footer-logo em { font-style: italic; color: var(--rose-dark); }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 11.5px;
+      color: var(--warm-light);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--warm-mid); }
+
+    @media (max-width: 768px) {
+      .nav { padding: 0 28px; }
+      .about-wrap { padding: 64px 28px 80px; }
+      .page-title { font-size: 38px; }
+      footer { padding: 24px 28px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Nano<em>Scope</em></a>
+    <ul class="nav-links">
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="https://www.instagram.com/nano.sabah/" target="_blank">Instagram</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="about-wrap">
+    <p class="page-eyebrow">About</p>
+    <h1 class="page-title">Hi, I'm Sabah.</h1>
+
+    <div class="prose">
+      <p>
+        British-born, Texas-based, and currently finishing a B.S. in Biological Sciences at Arizona State University — with a background in clinical radiography and an incoming place on the <strong>MSc in Nanotechnology for Medicine and Health Care at the University of Oxford</strong>.
+      </p>
+      <p>
+        NanoScope is a learning portfolio, and I want to be precise about that word. Some of it is me explaining concepts as clearly as I can manage — mostly so I'm sure I understand them. Some of it is notes on papers I've read. Some of it is self-directed projects: agent-based tumour modelling, RNA structure puzzles, kinetic models of drug release. The aim is clarity, not authority; if a sentence sounds impressive but means nothing, it shouldn't be here.
+      </p>
+      <p>
+        My interest is specifically in translation — why systems that work elegantly in controlled settings behave inconsistently in real patients, and what it would take to close that gap. The protein corona problem. Patient-to-patient variation in nanocarrier fate. The distance between a clean parameter sweep and a dataset shaped by heterogeneous human biology.
+      </p>
+      <p>
+        Outside the science, I work in watches, which means I have strong opinions about precision and a low tolerance for things that are badly made. This has bled into how I think about medical technology. A good drug-delivery system, like a good movement, is small, intricate, and completely unremarkable until you realise how much had to go right for it to work at all.
+      </p>
+      <p>
+        <em>Disclaimer: I'm not a researcher with a lab and a press office. I'm a student who finds this genuinely interesting and likes explaining it.</em>
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="contact-label">Find me elsewhere</p>
+    <div class="contact-links">
+      <a href="https://www.instagram.com/nano.sabah/" target="_blank" class="contact-link">
+        Instagram — @nano.sabah
+      </a>
+      <a href="https://nanoscope7.wordpress.com/" target="_blank" class="contact-link">
+        WordPress archive
+      </a>
+      <a href="mailto:sabah.sarwar@asu.edu" class="contact-link">
+        sabah.sarwar@asu.edu
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span class="footer-logo">Nano<em>Scope</em></span>
+    <ul class="footer-links">
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="https://www.instagram.com/nano.sabah/" target="_blank">@nano.sabah</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

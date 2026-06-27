@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — NanoScope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --espresso:   #1A1108;
+      --cream:      #FAF7F2;
+      --cream-mid:  #F0E9DF;
+      --warm-dark:  #2C2416;
+      --warm-mid:   #7A6A5A;
+      --warm-light: #C0B0A0;
+      --rose:       #C18E84;
+      --rose-light: #EDD9D4;
+      --rose-dark:  #906058;
+      --divider:    #E3D8CC;
+      --ink:        #1E160E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+      height: 64px;
+      border-bottom: 1px solid var(--divider);
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+
+    .nav-logo em { font-style: italic; color: var(--rose-dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 72px 64px 56px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .page-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .page-desc {
+      font-size: 14.5px;
+      line-height: 1.9;
+      color: var(--warm-mid);
+      font-weight: 300;
+      max-width: 580px;
+    }
+
+    /* ── POST LIST ── */
+    .post-list {
+      padding: 0 64px 96px;
+    }
+
+    .post-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 36px;
+      padding: 44px 0;
+      border-bottom: 1px solid var(--divider);
+      transition: opacity 0.2s;
+    }
+
+    .post-item:hover { opacity: 0.85; }
+
+    .post-img {
+      width: 180px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: var(--cream-mid);
+    }
+
+    .post-meta {
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--warm-light);
+      margin-bottom: 12px;
+    }
+
+    .post-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 14px;
+      transition: color 0.2s;
+    }
+
+    .post-item:hover .post-title { color: var(--rose-dark); }
+
+    .post-excerpt {
+      font-size: 13.5px;
+      color: var(--warm-mid);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .post-read {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      color: var(--rose-dark);
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 28px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--warm-mid);
+    }
+
+    .footer-logo em { font-style: italic; color: var(--rose-dark); }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 11.5px;
+      color: var(--warm-light);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--warm-mid); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav { padding: 0 28px; }
+      .page-header { padding: 52px 28px 40px; }
+      .page-title { font-size: 38px; }
+      .post-list { padding: 0 28px 72px; }
+      .post-item { grid-template-columns: 1fr; gap: 18px; }
+      .post-img { width: 100%; height: 180px; }
+      footer { padding: 24px 28px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Nano<em>Scope</em></a>
+    <ul class="nav-links">
+      <li><a href="blogs.html" class="active">Blog</a></li>
+      <li><a href="https://www.instagram.com/nano.sabah/" target="_blank">Instagram</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <p class="page-eyebrow">Writing</p>
+    <h1 class="page-title">Blog</h1>
+    <p class="page-desc">This is where I work through nanomedicine in writing. Some posts explain a concept as clearly as I can manage; some are notes on papers I've read; some are reflections on what I'm learning and where I keep getting stuck. The aim is clarity, not authority; if a sentence sounds impressive but means nothing, it shouldn't be here.</p>
+  </div>
+
+  <div class="post-list">
+
+    <a href="https://nanoscope7.wordpress.com/2026/06/24/teaching-the-immune-system-to-fight-childhood-cancer-with-mrna-and-peptides/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/neuroblastoma_rosettes.jpg" alt="">
+      <div>
+        <p class="post-meta">June 24, 2026</p>
+        <h2 class="post-title">Teaching the Immune System to Fight Childhood Cancer — With mRNA and Peptides</h2>
+        <p class="post-excerpt">There are few things in oncology more sobering than paediatric cancer statistics. Neuroblastoma — a tumour that develops in immature nerve cells and typically affects children under five — accounts for around 15% of paediatric cancer deaths.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/06/03/mits-nanotube-sensor-that-finds-bladder-cancer-before-you-can-see-it/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/nanosensor-coated-catheters-for-bladder-cancer-detection.png" alt="">
+      <div>
+        <p class="post-meta">June 3, 2026</p>
+        <h2 class="post-title">MIT's Nanotube Sensor That Finds Bladder Cancer Before You Can See It</h2>
+        <p class="post-excerpt">Bladder cancer has an unfair reputation for being survivable — which it often is, when caught early. The less-discussed part is what "early" actually looks like in practice: roughly 85,000 people are diagnosed in the US alone each year.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/05/16/a-baby-a-base-editor-and-six-months-to-save-a-life/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/screenshot-2026-06-26-022618.jpg" alt="">
+      <div>
+        <p class="post-meta">May 16, 2026</p>
+        <h2 class="post-title">A Baby, a Base Editor, and Six Months to Save a Life</h2>
+        <p class="post-excerpt">There is a version of this story that ends badly. It almost did. KJ Muldoon was born with severe carbamoyl phosphate synthetase 1 deficiency — a diagnosis that essentially means his liver could not process protein without toxic consequences.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/04/14/diagnosing-brain-tumours-while-the-patient-is-still-in-surgery/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/brain-scans-blue.jpg" alt="">
+      <div>
+        <p class="post-meta">April 14, 2026</p>
+        <h2 class="post-title">Diagnosing Brain Tumours While the Patient Is Still in Surgery?</h2>
+        <p class="post-excerpt">There's a particular kind of pressure in a neurosurgical theatre. A surgeon has just removed a small piece of brain tissue — a biopsy, perhaps only a millimetre or two across — and what happens next determines everything.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/04/11/paula-hammond-is-teaching-nanoparticles-to-multitask-and-it-might-change-how-we-treat-cancer/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/paula-hammond.jpg" alt="">
+      <div>
+        <p class="post-meta">April 11, 2026</p>
+        <h2 class="post-title">Paula Hammond Is Teaching Nanoparticles to Multitask — And It Might Change How We Treat Cancer</h2>
+        <p class="post-excerpt">There is a particular frustration in oncology that does not get discussed enough outside of research circles: cancer adapts. You give a patient a drug. It works — sometimes brilliantly, sometimes briefly — and then it stops.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/03/14/tiny-balls-big-problems-how-snas-are-sneaking-past-the-brains-defences/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/trojanhorset.jpg" alt="">
+      <div>
+        <p class="post-meta">March 14, 2026</p>
+        <h2 class="post-title">Tiny Balls, Big Problems: How SNAs Are Sneaking Past the Brain's Defences</h2>
+        <p class="post-excerpt">There is a reason glioblastoma has gone decades without a new approved drug. It is not that scientists haven't tried. It is that the brain, in its infinite wisdom, has constructed a wall so effective it keeps out almost everything — including treatment.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/03/07/when-your-skin-has-a-better-idea-than-your-surgeon/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/nanaop.jpeg" alt="">
+      <div>
+        <p class="post-meta">March 7, 2026</p>
+        <h2 class="post-title">When Your Skin Has a Better Idea Than Your Surgeon</h2>
+        <p class="post-excerpt">There's a compound in your skin that protects you from UV radiation, tints peacock feathers iridescent blue without a single drop of blue pigment, and is found in deep-sea fish that have never once seen the sun.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/02/11/nanoscience-and-the-future-of-sustainable-textiles/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/atmos_080920230400_hq-1280x1600-1.jpg" alt="">
+      <div>
+        <p class="post-meta">February 11, 2026</p>
+        <h2 class="post-title">Nanoscience, and the Future of Sustainable Textiles</h2>
+        <p class="post-excerpt">There is something quietly embarrassing about the textile industry. We have spent decades engineering clothes that perform brilliantly — stretch, wick, insulate, repel — and then promptly become very difficult to get rid of.</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+    <a href="https://nanoscope7.wordpress.com/2026/01/26/an-ai-that-reads-brain-tumour-slides-better-than-specialists-in-12-minutes/" target="_blank" class="post-item">
+      <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/screenshot-2026-06-26-021205.jpg" alt="">
+      <div>
+        <p class="post-meta">January 26, 2026</p>
+        <h2 class="post-title">An AI That Reads Brain Tumour Slides Better Than Specialists — In 12 Minutes</h2>
+        <p class="post-excerpt">Brain tumour diagnosis has always been one of medicine's more unforgiving bottlenecks. You have a patient, a tissue sample, and a question that needs answering as quickly as possible: what exactly is this, and what do we do next?</p>
+        <span class="post-read">Read →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    <span class="footer-logo">Nano<em>Scope</em></span>
+    <ul class="footer-links">
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="https://www.instagram.com/nano.sabah/" target="_blank">@nano.sabah</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

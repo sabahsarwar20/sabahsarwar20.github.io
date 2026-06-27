@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NanoScope — a curated look at nanomedicine.</title>
+  <meta name="description" content="A curated look at nanomedicine — drug delivery, diagnostics, and healthcare innovation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --espresso:   #1A1108;
+      --cream:      #FAF7F2;
+      --cream-mid:  #F0E9DF;
+      --warm-dark:  #2C2416;
+      --warm-mid:   #7A6A5A;
+      --warm-light: #C0B0A0;
+      --rose:       #C18E84;
+      --rose-light: #EDD9D4;
+      --rose-dark:  #906058;
+      --divider:    #E3D8CC;
+      --ink:        #1E160E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--warm-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+      height: 64px;
+      border-bottom: 1px solid var(--divider);
+      position: sticky;
+      top: 0;
+      background: var(--cream);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+
+    .nav-logo em { font-style: italic; color: var(--rose-dark); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 96px 64px 80px;
+      border-bottom: 1px solid var(--divider);
+      max-width: 900px;
+    }
+
+    .hero-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-attr {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm-light);
+      margin-bottom: 40px;
+    }
+
+    .hero-body {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--warm-mid);
+      font-weight: 300;
+      max-width: 560px;
+    }
+
+    /* ── POSTS SECTION ── */
+    .posts-section {
+      padding: 72px 64px 96px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--divider);
+      padding-bottom: 16px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      font-weight: 500;
+    }
+
+    .see-all {
+      font-size: 12px;
+      color: var(--warm-mid);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .see-all:hover { color: var(--ink); }
+
+    /* ── POST GRID ── */
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+
+    .post-card {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0;
+      border-top: 1px solid var(--divider);
+      padding: 32px 0;
+      column-gap: 28px;
+    }
+
+    .post-card:nth-child(odd) { padding-right: 48px; border-right: 1px solid var(--divider); }
+    .post-card:nth-child(even) { padding-left: 48px; }
+
+    .post-card:last-child:nth-child(odd) { grid-column: span 2; padding-right: 0; border-right: none; }
+
+    .post-img {
+      width: 140px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: var(--cream-mid);
+      flex-shrink: 0;
+    }
+
+    .post-meta {
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-light);
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    .post-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .post-card:hover .post-title { color: var(--rose-dark); }
+
+    .post-excerpt {
+      font-size: 13px;
+      color: var(--warm-mid);
+      font-weight: 300;
+      line-height: 1.75;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--divider);
+      padding: 28px 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--warm-mid);
+    }
+
+    .footer-logo em { font-style: italic; color: var(--rose-dark); }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 11.5px;
+      color: var(--warm-light);
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-links a:hover { color: var(--warm-mid); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav { padding: 0 28px; }
+      .hero { padding: 64px 28px 56px; }
+      .hero-quote { font-size: 36px; }
+      .posts-section { padding: 52px 28px 72px; }
+      .post-grid { grid-template-columns: 1fr; }
+      .post-card { padding: 28px 0 !important; border-right: none !important; }
+      .post-card:last-child:nth-child(odd) { grid-column: span 1; }
+      footer { padding: 24px 28px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Nano<em>Scope</em></a>
+    <ul class="nav-links">
+      <li><a href="blogs.html" class="active">Blog</a></li>
+      <li><a href="https://www.instagram.com/nano.sabah/" target="_blank">Instagram</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-quote">"Plenty of room<br>at the bottom."</p>
+    <p class="hero-attr">— Richard Feynman</p>
+    <p class="hero-body">Medicine is getting very small and very clever, and most of the interesting parts aren't being talked about yet. If this interests you, you're in the right place.</p>
+  </section>
+
+  <section class="posts-section">
+    <div class="section-header">
+      <span class="section-label">Latest Posts</span>
+      <a href="blogs.html" class="see-all">See all →</a>
+    </div>
+
+    <div class="post-grid">
+
+      <a href="https://nanoscope7.wordpress.com/2026/06/24/teaching-the-immune-system-to-fight-childhood-cancer-with-mrna-and-peptides/" target="_blank" class="post-card">
+        <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/neuroblastoma_rosettes.jpg" alt="">
+        <div>
+          <p class="post-meta">June 24, 2026</p>
+          <h2 class="post-title">Teaching the Immune System to Fight Childhood Cancer — With mRNA and Peptides</h2>
+          <p class="post-excerpt">Neuroblastoma accounts for around 15% of paediatric cancer deaths. A new approach uses mRNA and peptide vaccines to recruit the immune system directly.</p>
+        </div>
+      </a>
+
+      <a href="https://nanoscope7.wordpress.com/2026/06/03/mits-nanotube-sensor-that-finds-bladder-cancer-before-you-can-see-it/" target="_blank" class="post-card">
+        <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/nanosensor-coated-catheters-for-bladder-cancer-detection.png" alt="">
+        <div>
+          <p class="post-meta">June 3, 2026</p>
+          <h2 class="post-title">MIT's Nanotube Sensor That Finds Bladder Cancer Before You Can See It</h2>
+          <p class="post-excerpt">Bladder cancer is survivable when caught early. The problem is what "early" looks like in practice — and whether a nanotube sensor can change that.</p>
+        </div>
+      </a>
+
+      <a href="https://nanoscope7.wordpress.com/2026/05/16/a-baby-a-base-editor-and-six-months-to-save-a-life/" target="_blank" class="post-card">
+        <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/screenshot-2026-06-26-022618.jpg" alt="">
+        <div>
+          <p class="post-meta">May 16, 2026</p>
+          <h2 class="post-title">A Baby, a Base Editor, and Six Months to Save a Life</h2>
+          <p class="post-excerpt">KJ Muldoon was born with a metabolic disorder that should have been fatal. What happened next is one of the most remarkable things personalised medicine has ever done.</p>
+        </div>
+      </a>
+
+      <a href="https://nanoscope7.wordpress.com/2026/04/14/diagnosing-brain-tumours-while-the-patient-is-still-in-surgery/" target="_blank" class="post-card">
+        <img class="post-img" src="https://nanoscope7.wordpress.com/wp-content/uploads/2026/06/brain-scans-blue.jpg" alt="">
+        <div>
+          <p class="post-meta">April 14, 2026</p>
+          <h2 class="post-title">Diagnosing Brain Tumours While the Patient Is Still in Surgery?</h2>
+          <p class="post-excerpt">A surgeon removes a small piece of brain tissue and needs to know immediately what it is. Nanopore sequencing is now fast enough to answer that question intraoperatively.</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">Nano<em>Scope</em></span>
+    <ul class="footer-links">
+      <li><a href="blogs.html">Blog</a></li>
+      <li><a href="https://www.instagram.com/nano.sabah/" target="_blank">@nano.sabah</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
