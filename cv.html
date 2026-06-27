@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>main</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div class="tabularx">
+<p><span>L r</span> <strong>Sabah Sarwar</strong> &amp; [Your Phone
+Number]<br />
+<span>MSc Nanotechnology for Medicine &amp; Health Care, University of
+Oxford (Oct 2026)</span> &amp; <a
+href="mailto:[Your Email Address]">[Your Email Address]</a><br />
+<span>B.S. Biological Sciences, Arizona State University (Aug 2026)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+GPA: 3.84/4.00</span> &amp; <a
+href="https://nanoscope7.wordpress.com">nanoscope7.wordpress.com</a><br />
+<span>UK Citizen
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+US Permanent Resident</span> &amp; <a
+href="https://www.linkedin.com/in/sabahsarwar/">linkedin.com/in/sabahsarwar</a></p>
+</div>
+<h1 id="education">Education</h1>
+<div class="tabularx">
+<p><span>|c|C|c|c|</span> <strong>Degree</strong> &amp;
+<strong>Institution</strong> &amp; <strong>GPA / Result</strong> &amp;
+<strong>Year</strong><br />
+MSc Nanotechnology for Medicine &amp; Health Care &amp; University of
+Oxford &amp; – &amp; Oct 2026<br />
+B.S. Biological Sciences (Neurobiology, Physiology &amp; Behaviour)
+&amp; Arizona State University &amp; 3.84 / 4.00 &amp; Aug 2026<br />
+Secondary Education (A-Levels / GCSEs) &amp; Beaconsfield High School,
+UK (Selective Grammar) &amp; STEM Award, CS &amp; 2019<br />
+</p>
+</div>
+<h1 id="clinical-experience">Clinical Experience</h1>
+<ul>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Radiologic
+Technologist</strong></td>
+<td style="text-align: right;"><em><span>Jan 2023 – Jun 2025
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⋅</mi><annotation encoding="application/x-tex">\cdot</annotation></semantics></math>
+2.5 years</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span>American Family Care Urgent
+Care</span></em></td>
+<td style="text-align: right;"><span>On-site</span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Performed diagnostic radiographic imaging across the full
+range of urgent care presentations including musculoskeletal trauma,
+thoracic pathology (pneumothorax, consolidation, effusion), and
+abdominal studies</span></p></li>
+<li><p><span>Collaborated with attending physicians on imaging protocol
+selection; communicated preliminary findings in real time in a
+high-volume, patient-facing environment</span></p></li>
+<li><p><span>Operated digital radiography (DR) systems under ALARA
+radiation safety principles; maintained EHR documentation and strict
+HIPAA compliance across all patient interactions</span></p></li>
+</ul>
+</div></li>
+</ul>
+<h1 id="research-independent-projects">Research &amp; Independent
+Projects</h1>
+<ul>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Paediatric Cancer &amp; Mast Cell
+Biology</strong></td>
+<td style="text-align: right;"><em><span>2024 – 2025</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>ASU School of Life Sciences
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+Supervisor: Dr. S.A. Holechek</em></span></td>
+<td style="text-align: right;"><span><strong>2<sup>nd</sup>
+Place</strong>, BioSci Southwest Symposium</span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Conducted supervised primary literature synthesis on the
+tumourigenic role of mast cells in paediatric solid tumours; framed
+mechanistic hypothesis regarding mast cell-mediated angiogenesis and
+immune evasion in the tumour microenvironment</span></p></li>
+<li><p><span>Interpreted immunological and histological data from
+published studies (tryptase/chymase expression, VEGF/CD31
+co-localisation); produced written report and poster presentation
+awarded second place at BioSci Southwest Symposium</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Computational Modelling of
+Nanoparticle Drug Delivery in Solid Tumours</strong></td>
+<td style="text-align: right;"><em><span>2024 – 2025</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>Independent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+pc4nanobio / PhysiCell framework (nanoHUB.org)</em></span></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Conducted independent agent-based simulations of
+nanoparticle behaviour in solid tumour microenvironments; investigated
+sensitivity of tumour response predictions to NP uptake kinetics and
+intracellular drug-release parameters</span></p></li>
+<li><p><span>Applied findings to translational analysis of targeted
+nanoparticle oncology therapy; informed independent manuscript
+preparation on protein corona variability in liposomal
+systems</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Thermosensitive Liposomes –
+Kinetic Modelling &amp; 3D Animation</strong></td>
+<td style="text-align: right;"><em><span>2025</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>Independent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+NanoScope Platform</em></span></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Modelled DPPC bilayer phase-transition drug release
+kinetics at hyperthermic temperatures (40–42°C) in Python; produced
+Blender 3D molecular animation depicting TSL drug release
+mechanism</span></p></li>
+<li><p><span>Contextualised within ThermoDox clinical precedent
+(lyso-thermosensitive liposomal doxorubicin); published as educational
+content across NanoScope blog and Instagram</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Proteins Mosaic Q – International
+Structural Biology Collaboration</strong></td>
+<td style="text-align: right;"><em><span>2024 – 2025</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>Universidad de Sevilla, Spain
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+Dr. F.J. Lobo Cabrera / Prof. J.A. Prado-Bassas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+via SciStarter</em></span></td>
+<td style="text-align: right;"><span><a
+href="https://www.biorxiv.org/content/10.1101/500025v1.full">bioRxiv:
+10.1101/500025</a></span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Served as independent visual observer in a crowdsourced
+study validating a novel amino acid clustering pattern (Mosaic Q) across
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>&gt;</mo><annotation encoding="application/x-tex">&gt;</annotation></semantics></math>160,000
+PDB-derived protein structures; pattern distinct from classical
+hydrophobic core organisation and as yet unpublished</span></p></li>
+<li><p><span>Conducted systematic Jmol-based annotation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>70
+protein structures across globular, enzymatic, and regulatory protein
+families; contributed to observer agreement dataset supplementing prior
+computational analysis</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Eterna RNA Design – Citizen
+Science</strong></td>
+<td style="text-align: right;"><em><span>2024 – Present</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>Stanford Medicine / Das
+Lab</em></span></td>
+<td style="text-align: right;"><span><a
+href="https://eternagame.org">eternagame.org</a></span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Designed RNA structural sequences on the Eterna platform;
+top-performing community submissions are synthesised and experimentally
+validated by the Das Lab at Stanford Medicine</span></p></li>
+<li><p><span>Developed working familiarity with RNA secondary structure
+prediction and sequence optimisation, relevant to mRNA nanoparticle
+delivery research contexts</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Manuscript in Preparation –
+<em>Nanomedicine: Nanotechnology, Biology and
+Medicine</em></strong></td>
+<td style="text-align: right;"><em><span>2026</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>Target: Elsevier NBM Journal
+(ISSN 1549-9634)</em></span></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Preparing narrative review on patient-to-patient
+variability in protein corona formation on PEGylated liposomal
+nanocarriers, with proposed implications for personalised oncology drug
+delivery</span></p></li>
+</ul>
+</div></li>
+</ul>
+<h1 id="science-communication">Science Communication</h1>
+<ul>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>NanoScope – Founder &amp;
+Editor</strong></td>
+<td style="text-align: right;"><em><span>2024 – Present</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>nanoscope7.wordpress.com
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+Instagram: @nano.sabah</em></span></td>
+<td style="text-align: right;"><span>1,000+ Followers</span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Founded and independently edit a nanomedicine science
+communication platform; published 15+ research-informed articles
+covering lipid nanoparticles, mRNA vaccine delivery, graphene
+biosensors, ctDNA liquid biopsy, nanopore sequencing, and oncology drug
+delivery</span></p></li>
+<li><p><span>Translates peer-reviewed nanomedicine literature for a
+non-specialist audience; demonstrated sustained editorial discipline,
+technical literacy, and public engagement over an extended
+period</span></p></li>
+</ul>
+</div></li>
+</ul>
+<h1 id="hackathons-research-competitions">Hackathons &amp; Research
+Competitions</h1>
+<ul>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>H2Ai Healthcare with AI
+Hackathon</strong></td>
+<td style="text-align: right;"><em><span>Apr 2026</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em>Georgetown
+University</em></span></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Co-developed NeuroTrace, a proposed AI-powered
+neuromuscular monitoring platform for Parkinson’s Disease; integrated
+wearable IMU sensor data with an LSTM-based symptom severity classifier
+aligned to MDS-UPDRS clinical scoring for real-time motor fluctuation
+tracking</span></p></li>
+<li><p><span>Led clinical problem framing and pitch presentation to an
+interdisciplinary panel of clinicians, AI researchers, and healthcare
+investors; drew on clinical background to bridge engineering capability
+and bedside usability</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Medical Research Hackathon –
+Systematic Review &amp; Meta-Analysis</strong></td>
+<td style="text-align: right;"><em><span>Jun 2026</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span><em></em></span></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Conducted rapid systematic review of PEGylated liposomal
+doxorubicin versus conventional doxorubicin in breast cancer RCTs within
+a 48-hour framework; applied PRISMA methodology, Cochrane Risk of Bias
+tool, and RevMan for effect size pooling</span></p></li>
+<li><p><span>Co-produced structured summary report including PRISMA flow
+diagram, forest plot, pooled OR/RR with 95% CI, and heterogeneity
+analysis (I<sup>2</sup> statistic)</span></p></li>
+</ul>
+</div></li>
+</ul>
+<h1 id="professional-experience">Professional Experience</h1>
+<ul>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Showroom Sales
+Associate</strong></td>
+<td style="text-align: right;"><em><span>Jul 2025 –
+Present</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span>Christopher
+Ward</span></em></td>
+<td style="text-align: right;"><span>Frisco, Texas</span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Client relationship management, order processing, inventory
+coordination, and internal reporting in a premium retail environment;
+developed professional communication and data management
+competencies</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Barista</strong></td>
+<td style="text-align: right;"><em><span>Aug 2024 – Jun
+2025</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span>Starbucks</span></em></td>
+<td style="text-align: right;"><span>Frisco, Texas</span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Concurrent with full-time B.S. study at ASU; high-volume
+customer service in a fast-paced environment</span></p></li>
+</ul>
+</div></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Teaching Assistant</strong></td>
+<td style="text-align: right;"><em><span>Jul 2019 – Apr
+2021</span></em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><em><span>AE Tuition</span></em></td>
+<td style="text-align: right;"><span>Langley, Berkshire, UK</span></td>
+</tr>
+</tbody>
+</table>
+<div class="justify">
+<ul>
+<li><p><span>Delivered one-to-one and small-group academic support
+across science and mathematics; developed instructional communication
+skills across varied student ability levels</span></p></li>
+</ul>
+</div></li>
+</ul>
+<h1 id="skills">Skills</h1>
+<ul>
+<li><p><span> <strong>Computational</strong><span>:Python, PhysiCell /
+pc4nanobio (agent-based tumour modelling), Jmol (molecular
+visualisation), Blender (3D molecular animation), RevMan (meta-analysis)
+</span> </span></p></li>
+<li><p><span> <strong>Research Methods</strong><span>:PRISMA systematic
+review, Cochrane Risk of Bias assessment, primary literature synthesis,
+hypothesis development, scientific writing, poster presentation </span>
+</span></p></li>
+<li><p><span> <strong>Clinical</strong><span>:Diagnostic radiography
+(digital DR systems), surface EMG (biosignal acquisition), EHR
+documentation, phlebotomy, ALARA radiation safety, patient consent and
+HIPAA compliance </span> </span></p></li>
+<li><p><span> <strong>Communication</strong><span>:Nanomedicine science
+writing for non-specialist audiences, long-form blog editorial
+management, Instagram science communication, interdisciplinary pitch
+presentation </span> </span></p></li>
+</ul>
+<h1 id="certifications-awards">Certifications &amp; Awards</h1>
+<ul>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Good Clinical Practice (GCP)
+E6(R3)</strong>,International Council for Harmonisation (ICH)
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+Credential ID: GCP-TR-202605-602B27
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+Valid to May 2028</td>
+<td style="text-align: right;"><em><span>Issued May
+2026</span></em></td>
+</tr>
+</tbody>
+</table></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Dean’s List of Outstanding
+Scholars</strong>,Arizona State University
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+GPA 3.84/4.00</td>
+<td style="text-align: right;"><em><span>Fall 2024; Spring
+2026</span></em></td>
+</tr>
+</tbody>
+</table></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Second Place – Poster
+Presentation</strong>,BioSci Southwest Symposium
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+“Paediatric Cancer and the Potential Role of Mast Cells”</td>
+<td style="text-align: right;"><em><span>2025</span></em></td>
+</tr>
+</tbody>
+</table></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>STEM Award (Computer
+Science)</strong>,Beaconsfield High School, UK (Selective Grammar
+School)</td>
+<td style="text-align: right;"><em><span>2019</span></em></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<h1 id="memberships-volunteering">Memberships &amp; Volunteering</h1>
+<ul>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Member</strong>,American
+Association for the Advancement of Science (AAAS)</td>
+<td style="text-align: right;"><em></em></td>
+</tr>
+</tbody>
+</table></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Member</strong>,Phi Theta Kappa
+International Honour Society</td>
+<td style="text-align: right;"><em></em></td>
+</tr>
+</tbody>
+</table></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Visual Interpreter –
+Volunteer</strong>,Be My Eyes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo stretchy="false" form="prefix">|</mo><annotation encoding="application/x-tex">|</annotation></semantics></math>
+Real-time visual assistance for blind and low-vision users, including
+health-related tasks</td>
+<td style="text-align: right;"><em><span>2023 – Present</span></em></td>
+</tr>
+</tbody>
+</table></li>
+<li><table>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Volunteer</strong>,Luv Michael
+Leadership Programme (social enterprise supporting adults with
+autism)</td>
+<td style="text-align: right;"><em></em></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+</body>
+</html>
